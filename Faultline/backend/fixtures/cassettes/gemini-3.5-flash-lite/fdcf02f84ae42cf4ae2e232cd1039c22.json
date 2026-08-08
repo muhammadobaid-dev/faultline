@@ -1,0 +1,9 @@
+{
+  "outcome": "ok",
+  "text": "Hello! I'd be happy to assist you. Before we get started, could you please confirm your Meridian Cloud account ID? \n\nOnce I have that, I can help you with:\n* Billing questions, invoices, and plan changes\n* Service outages and status enquiries\n* Account settings, user seats, and access problems\n\nWhat can I help you with today?",
+  "finish_reason": "STOP",
+  "block_reason": null,
+  "http_status": 200,
+  "detail": null,
+  "safety_ratings": []
+}

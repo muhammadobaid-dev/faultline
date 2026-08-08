@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Secrets - never commit
+.env
+.env.*
+!.env.example
+
+# Local run output
+backend/out/
+
+# Local run state (queue, ledger, generated data)
+backend/out/
+
+# Alembic bytecode
+backend/migrations/versions/__pycache__/

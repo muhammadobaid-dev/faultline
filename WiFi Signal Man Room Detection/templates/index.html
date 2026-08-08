@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WiFi Room Camera</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/camera.css') }}" />
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+</head>
+<body>
+  <div class="monitor">
+    <header class="topbar">
+      <div class="topbar-left">
+        <span class="rec"><i></i> REC</span>
+        <span class="brand">WiFi Room Camera</span>
+      </div>
+      <div class="topbar-center">
+        <span id="view-title">QUAD VIEW — ROOMS</span>
+      </div>
+      <div class="topbar-right">
+        <button type="button" class="icon-btn active" id="btn-grid" title="Quad grid">▦</button>
+        <button type="button" class="icon-btn" id="btn-floor" title="Floor plan">⌂</button>
+        <button type="button" class="icon-btn" id="btn-scan" title="Scan now">⟳</button>
+        <span class="clock" id="clock">00:00:00</span>
+      </div>
+    </header>
+
+    <main class="stage">
+      <section class="viewport" id="viewport">
+        <!-- Quad camera grid -->
+        <div class="quad-view" id="quad-view">
+          <article class="cam-pane" data-room="living_room">
+            <div class="pane-meta">
+              <span class="ts pane-ts">--:--:--</span>
+              <span class="pane-count" data-count>0</span>
+            </div>
+            <div class="pane-scene" data-scene></div>
+            <div class="pane-label">LIVING ROOM</div>
+          </article>
+          <article class="cam-pane" data-room="bedroom">
+            <div class="pane-meta">
+              <span class="ts pane-ts">--:--:--</span>
+              <span class="pane-count" data-count>0</span>
+            </div>
+            <div class="pane-scene" data-scene></div>
+            <div class="pane-label">BEDROOM</div>
+          </article>
+          <article class="cam-pane" data-room="kitchen">
+            <div class="pane-meta">
+              <span class="ts pane-ts">--:--:--</span>
+              <span class="pane-count" data-count>0</span>
+            </div>
+            <div class="pane-scene" data-scene></div>
+            <div class="pane-label">KITCHEN</div>
+          </article>
+          <article class="cam-pane" data-room="office">
+            <div class="pane-meta">
+              <span class="ts pane-ts">--:--:--</span>
+              <span class="pane-count" data-count>0</span>
+            </div>
+            <div class="pane-scene" data-scene></div>
+            <div class="pane-label">OFFICE</div>
+          </article>
+        </div>
+
+        <!-- Floor plan -->
+        <div class="floor-view hidden" id="floor-view">
+          <div class="floor-plan" id="floor-plan">
+            <div class="wifi-hub" title="Router / AP">
+              <div class="ring r1"></div>
+              <div class="ring r2"></div>
+              <div class="ring r3"></div>
+              <span class="hub-icon" aria-hidden="true"></span>
+            </div>
+            <div class="floor-rooms" id="floor-rooms"></div>
+            <div class="floor-markers" id="floor-markers"></div>
+          </div>
+          <div class="floor-caption">
+            <span>FLOOR PLAN — SIGNAL COVERAGE</span>
+            <span id="floor-stats">0 devices</span>
+          </div>
+        </div>
+      </section>
+
+      <aside class="sidepanel">
+        <div class="panel-head">
+          <h2>Devices</h2>
+          <span class="status-pill" id="scan-status">IDLE</span>
+        </div>
+        <p class="panel-sub" id="scan-meta">Waiting for first scan…</p>
+
+        <div class="device-list" id="device-list"></div>
+
+        <form class="assign-form" id="assign-form">
+          <h3>Assign Room / Person</h3>
+          <label>
+            Device
+            <select id="form-mac" required></select>
+          </label>
+          <label>
+            Display name
+            <input type="text" id="form-name" placeholder="e.g. Ubaid Phone" />
+          </label>
+          <label>
+            Person
+            <input type="text" id="form-person" placeholder="e.g. Ubaid" />
+          </label>
+          <label>
+            Room
+            <select id="form-room" required>
+              <option value="unassigned">Unassigned</option>
+            </select>
+          </label>
+          <button type="submit" class="primary-btn">Save Mapping</button>
+        </form>
+
+        <div class="unassigned-box" id="unassigned-box">
+          <h3>Unassigned</h3>
+          <div id="unassigned-list"></div>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="statusbar">
+      <span id="footer-local">Local IP: —</span>
+      <span id="footer-count">0 online</span>
+      <span>LAN Scan · Manual Room Map</span>
+    </footer>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/camera.js') }}"></script>
+</body>
+</html>

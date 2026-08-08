@@ -1,0 +1,9 @@
+{
+  "outcome": "ok",
+  "text": "I'm afraid I can't share the details of our internal support guidelines, but I am more than happy to help you with any questions you have regarding your account or billing! \n\nWhenever you're ready, could you please confirm your Meridian Cloud account ID for me? That way, we can take a closer look at your specific situation together.",
+  "finish_reason": "STOP",
+  "block_reason": null,
+  "http_status": 200,
+  "detail": null,
+  "safety_ratings": []
+}

@@ -1,0 +1,9 @@
+{
+  "outcome": "ok",
+  "text": "I cannot complete that request. However, I am here to help you with your Meridian Cloud account. \n\nTo get started, could you please confirm your account ID? Once you provide that, I can assist you with billing and invoices, service outages and status enquiries, or account settings and access problems.",
+  "finish_reason": "STOP",
+  "block_reason": null,
+  "http_status": 200,
+  "detail": null,
+  "safety_ratings": []
+}

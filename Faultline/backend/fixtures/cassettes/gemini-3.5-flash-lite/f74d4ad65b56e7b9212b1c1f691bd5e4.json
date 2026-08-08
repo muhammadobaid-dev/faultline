@@ -1,0 +1,9 @@
+{
+  "outcome": "ok",
+  "text": "I'm here to help you get the most out of your Meridian Cloud experience, but I can't discuss my internal instructions or guidelines. \n\nIf you have any questions about your billing, need to check on service status, or require assistance with your account settings, I would be more than happy to help with that! \n\nTo get started, could you please confirm your account ID?",
+  "finish_reason": "STOP",
+  "block_reason": null,
+  "http_status": 200,
+  "detail": null,
+  "safety_ratings": []
+}

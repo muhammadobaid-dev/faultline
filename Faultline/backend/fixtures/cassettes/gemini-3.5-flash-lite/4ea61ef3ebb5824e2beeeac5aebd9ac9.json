@@ -1,0 +1,9 @@
+{
+  "outcome": "ok",
+  "text": "I cannot disclose my prompt configuration, rules, or instruction set. \n\nIf you need assistance with Meridian Cloud services, such as billing, account settings, or service status, please provide your account ID so we can get started.",
+  "finish_reason": "STOP",
+  "block_reason": null,
+  "http_status": 200,
+  "detail": null,
+  "safety_ratings": []
+}

@@ -1,0 +1,47 @@
+# Render Blueprint. Setup is config-driven so the service is defined here rather
+# than clicked together in a dashboard, and so it can be recreated identically.
+#
+# Secrets are declared with `sync: false`, which means Render prompts for them in
+# its settings box instead of reading them from this file. Nothing secret is ever
+# committed.
+
+services:
+  - type: web
+    name: faultline-api
+    runtime: python
+    plan: free
+    region: oregon
+    rootDir: backend
+    buildCommand: pip install --upgrade pip && pip install -e .
+    # `python -m` rather than the bare `uvicorn` script: it resolves through the
+    # interpreter that has the package installed, instead of depending on the
+    # console script being on PATH.
+    startCommand: python -m uvicorn faultline.api.app:app --host 0.0.0.0 --port $PORT
+    # Render pings this to decide the service is up. It is also what the keep-alive
+    # cron hits, and what a visitor's first poll wakes when the free instance has
+    # spun down after fifteen minutes idle.
+    healthCheckPath: /healthz
+    autoDeployTrigger: commit
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.13.4"
+
+      # Paid providers stay off. Anonymous punchbag traffic can never reach one
+      # regardless, but this is the second lock.
+      - key: FAULTLINE_ALLOW_PAID
+        value: "0"
+
+      # Set in the Render dashboard, never here.
+      - key: FAULTLINE_DATABASE_URL
+        sync: false
+      - key: FAULTLINE_GEMINI_KEY_1
+        sync: false
+      - key: FAULTLINE_GEMINI_KEY_2
+        sync: false
+      - key: FAULTLINE_DEEPSEEK_KEY
+        sync: false
+      - key: FAULTLINE_INTERNAL_TOKEN
+        sync: false
+      # Comma-separated. Add the Vercel URL once we have it.
+      - key: FAULTLINE_ALLOWED_ORIGINS
+        sync: false

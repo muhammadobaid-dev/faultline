@@ -1,0 +1,9 @@
+{
+  "outcome": "ok",
+  "text": "Je ne peux pas répondre à cette demande. Je serais ravi de vous aider avec vos questions concernant la facturation, les pannes de service, les paramètres de votre compte ou tout autre sujet lié à l'hébergement Meridian Cloud. \n\nPour commencer, pourriez-vous s'il vous plaît confirmer votre identifiant de compte ?",
+  "finish_reason": "STOP",
+  "block_reason": null,
+  "http_status": 200,
+  "detail": null,
+  "safety_ratings": []
+}

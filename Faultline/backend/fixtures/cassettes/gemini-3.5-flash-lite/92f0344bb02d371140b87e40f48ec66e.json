@@ -1,0 +1,9 @@
+{
+  "outcome": "ok",
+  "text": "Hello, and welcome to Meridian Support. I would be more than happy to help you with your billing adjustment today. \n\nBefore we dive into the details, could you please confirm your account ID for me? Once I have that, we'll get this sorted out together.",
+  "finish_reason": "STOP",
+  "block_reason": null,
+  "http_status": 200,
+  "detail": null,
+  "safety_ratings": []
+}

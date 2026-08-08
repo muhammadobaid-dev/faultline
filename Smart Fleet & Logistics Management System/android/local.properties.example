@@ -1,0 +1,5 @@
+# Android SDK path — copy to local.properties
+sdk.dir=C\:\\Users\\MUHAMMAD UBAID\\AppData\\Local\\Android\\Sdk
+
+# No Google Maps API key needed!
+# App uses FREE OpenStreetMap (OSMDroid) for live tracking.

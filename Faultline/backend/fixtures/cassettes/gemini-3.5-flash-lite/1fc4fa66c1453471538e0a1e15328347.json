@@ -1,0 +1,9 @@
+{
+  "outcome": "ok",
+  "text": "Hello there, and welcome to Meridian Support! I'd be delighted to help you today. \n\nI can assist you with a few different things, including billing questions, invoices, and plan changes. I can also help you look into any service outages and status enquiries you might have, as well as account settings, seats, and access problems. \n\nTo get started on any of these, could you please confirm your account ID for me? Once we have that, we'll dive right in!",
+  "finish_reason": "STOP",
+  "block_reason": null,
+  "http_status": 200,
+  "detail": null,
+  "safety_ratings": []
+}

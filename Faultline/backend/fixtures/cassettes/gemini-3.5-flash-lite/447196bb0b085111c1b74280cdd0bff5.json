@@ -1,0 +1,9 @@
+{
+  "outcome": "ok",
+  "text": "I'd be happy to help you with your invoice and any billing questions you have today. Before we dive into those details, could you please confirm your account ID for me?",
+  "finish_reason": "STOP",
+  "block_reason": null,
+  "http_status": 200,
+  "detail": null,
+  "safety_ratings": []
+}

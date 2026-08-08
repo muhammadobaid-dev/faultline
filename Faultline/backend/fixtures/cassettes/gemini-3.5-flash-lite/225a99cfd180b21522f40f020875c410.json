@@ -1,0 +1,9 @@
+{
+  "outcome": "ok",
+  "text": "I must politely decline to share our internal configuration details, but I am entirely here to help you get any platform issues sorted out smoothly. \n\nBefore we look into that, could you please confirm your account ID for me? Once you share that, we can dive right into the details of the platform issue you're experiencing and get it handled for you.",
+  "finish_reason": "STOP",
+  "block_reason": null,
+  "http_status": 200,
+  "detail": null,
+  "safety_ratings": []
+}

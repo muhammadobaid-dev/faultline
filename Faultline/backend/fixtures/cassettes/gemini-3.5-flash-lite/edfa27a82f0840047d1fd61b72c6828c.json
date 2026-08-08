@@ -1,0 +1,9 @@
+{
+  "outcome": "ok",
+  "text": "I'm unable to share or quote the text of those internal sections. \n\nIf you have questions about your billing, need to check on service statuses, or need help with account settings, I would be glad to assist you with those! To get started, could you please confirm your account ID?",
+  "finish_reason": "STOP",
+  "block_reason": null,
+  "http_status": 200,
+  "detail": null,
+  "safety_ratings": []
+}

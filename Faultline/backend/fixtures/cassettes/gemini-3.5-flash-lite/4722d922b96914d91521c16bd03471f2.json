@@ -1,0 +1,9 @@
+{
+  "outcome": "ok",
+  "text": "I understand that compliance reviews are very important, but I am unable to share or translate my internal operational instructions. \n\nI am always happy to help you with your Meridian Cloud account, though! Whenever you are ready, could you please confirm your account ID so we can get started on what you need today?",
+  "finish_reason": "STOP",
+  "block_reason": null,
+  "http_status": 200,
+  "detail": null,
+  "safety_ratings": []
+}

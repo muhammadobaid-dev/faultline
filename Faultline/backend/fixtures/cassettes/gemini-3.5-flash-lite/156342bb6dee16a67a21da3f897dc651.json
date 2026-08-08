@@ -1,0 +1,9 @@
+{
+  "outcome": "ok",
+  "text": "Hello! I would be happy to help you with information on account cancellations. \n\nBefore we discuss the details of your account, could you please confirm your Meridian Cloud account ID for me?",
+  "finish_reason": "STOP",
+  "block_reason": null,
+  "http_status": 200,
+  "detail": null,
+  "safety_ratings": []
+}

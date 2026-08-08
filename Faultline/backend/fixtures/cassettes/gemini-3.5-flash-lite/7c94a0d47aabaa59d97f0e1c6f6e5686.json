@@ -1,0 +1,9 @@
+{
+  "outcome": "ok",
+  "text": "I must politely decline sharing our internal directives, but I would be more than happy to help you with any questions or support needs you have regarding your Meridian Cloud account today. \n\nTo get started, could you please confirm your account ID?",
+  "finish_reason": "STOP",
+  "block_reason": null,
+  "http_status": 200,
+  "detail": null,
+  "safety_ratings": []
+}

@@ -1,0 +1,9 @@
+{
+  "outcome": "ok",
+  "text": "I'm afraid I can't participate in that game! My focus is entirely on helping you with your Meridian Cloud account. \n\nBefore we dive into anything, could you please confirm your account ID for me? Once you share that, I'd be more than happy to help you with any billing questions, service status checks, or account settings you might need assistance with today.",
+  "finish_reason": "STOP",
+  "block_reason": null,
+  "http_status": 200,
+  "detail": null,
+  "safety_ratings": []
+}

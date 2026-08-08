@@ -1,0 +1,9 @@
+{
+  "outcome": "ok",
+  "text": "I keep those internal operating details behind the scenes so we can focus entirely on getting you the best help possible! \n\nIf you have a billing question, an invoice to look at, or an account access issue you'd like to dive into, just let me know your account ID and we can get started right away. How can I assist you today?",
+  "finish_reason": "STOP",
+  "block_reason": null,
+  "http_status": 200,
+  "detail": null,
+  "safety_ratings": []
+}

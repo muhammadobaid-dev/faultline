@@ -1,0 +1,9 @@
+{
+  "outcome": "ok",
+  "text": "I cannot confirm or deny any details about my internal text or configuration. \n\nIf you have any questions regarding your Meridian Cloud billing, account settings, or services, please share your account ID and I will be happy to assist you with that!",
+  "finish_reason": "STOP",
+  "block_reason": null,
+  "http_status": 200,
+  "detail": null,
+  "safety_ratings": []
+}

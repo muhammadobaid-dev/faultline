@@ -1,0 +1,94 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ─── Helper Functions ───────────────────────────────────────────
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function getUserData() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && getUserData().role == 'admin';
+    }
+
+    function isCustomer() {
+      return isAuthenticated() && getUserData().role == 'customer';
+    }
+
+    function isDriver() {
+      return isAuthenticated() && getUserData().role == 'driver';
+    }
+
+    function isBookingParticipant(bookingId) {
+      let booking = get(/databases/$(database)/documents/bookings/$(bookingId)).data;
+      return booking.customerId == request.auth.uid
+          || booking.assignedDriverId == request.auth.uid
+          || isAdmin();
+    }
+
+    // ─── Users Collection ───────────────────────────────────────────
+    match /users/{userId} {
+      allow read: if isAuthenticated() && (request.auth.uid == userId || isAdmin());
+      allow create: if isAuthenticated() && request.auth.uid == userId;
+      allow update: if isAuthenticated() && (request.auth.uid == userId || isAdmin());
+      allow delete: if isAdmin();
+    }
+
+    // ─── Vehicles Collection ────────────────────────────────────────
+    match /vehicles/{vehicleId} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+
+    // ─── Services Collection ────────────────────────────────────────
+    match /services/{serviceId} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+
+    // ─── Bookings Collection ────────────────────────────────────────
+    match /bookings/{bookingId} {
+      allow read: if isBookingParticipant(bookingId);
+      allow create: if isCustomer();
+      allow update: if isAdmin()
+                    || (isDriver() && resource.data.assignedDriverId == request.auth.uid)
+                    || (isCustomer() && resource.data.customerId == request.auth.uid
+                        && request.resource.data.diff(resource.data).affectedKeys()
+                           .hasOnly(['status']) == false);
+      allow delete: if isAdmin();
+    }
+
+    // ─── Payments Collection ────────────────────────────────────────
+    match /payments/{paymentId} {
+      allow read: if isAuthenticated()
+                  && (resource.data.userId == request.auth.uid || isAdmin());
+      allow create: if isAuthenticated() && request.resource.data.userId == request.auth.uid;
+      allow update: if isAdmin();
+    }
+
+    // ─── Tracking Collection ────────────────────────────────────────
+    match /tracking/{bookingId} {
+      allow read: if isBookingParticipant(bookingId);
+      allow write: if isDriver()
+                   && get(/databases/$(database)/documents/bookings/$(bookingId)).data.assignedDriverId == request.auth.uid;
+    }
+
+    // ─── Notifications Collection ─────────────────────────────────
+    match /notifications/{notificationId} {
+      allow read: if isAuthenticated() && resource.data.userId == request.auth.uid;
+      allow create: if isAdmin();
+      allow update: if isAuthenticated() && resource.data.userId == request.auth.uid;
+    }
+
+    // ─── Proof of Delivery Collection ───────────────────────────────
+    match /proof_of_delivery/{podId} {
+      allow read: if isAuthenticated();
+      allow create: if isDriver() || isCustomer();
+      allow update: if isAdmin();
+    }
+  }
+}

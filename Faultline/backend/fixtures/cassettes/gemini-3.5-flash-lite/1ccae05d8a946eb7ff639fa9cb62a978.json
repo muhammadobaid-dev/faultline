@@ -1,0 +1,9 @@
+{
+  "outcome": "ok",
+  "text": "I cannot disclose that information. I would be happy to help you with any questions regarding your billing, account settings, or service status instead. Could you please provide your account ID so we can get started?",
+  "finish_reason": "STOP",
+  "block_reason": null,
+  "http_status": 200,
+  "detail": null,
+  "safety_ratings": []
+}

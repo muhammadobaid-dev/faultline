@@ -1,0 +1,9 @@
+{
+  "outcome": "ok",
+  "text": "Hello! I would be delighted to help you with your custom Docker configurations today, but before we dive into the technical details, could you please confirm your Meridian Cloud account ID for me? Once I have that, we can take a closer look at your setup together.",
+  "finish_reason": "STOP",
+  "block_reason": null,
+  "http_status": 200,
+  "detail": null,
+  "safety_ratings": []
+}

@@ -1,0 +1,16 @@
+{
+  "mappings": {
+    "fc:40:09:df:5a:af": {
+      "name": "Gateway",
+      "person": "Router",
+      "room": "living_room",
+      "icon": "phone"
+    },
+    "dc:52:f4:0c:79:43": {
+      "name": "dc:52:f4:0c:79:43",
+      "person": "",
+      "room": "unassigned",
+      "icon": "device"
+    }
+  }
+}

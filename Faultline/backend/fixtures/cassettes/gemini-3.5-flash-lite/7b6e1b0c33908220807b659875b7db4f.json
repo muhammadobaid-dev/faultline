@@ -1,0 +1,9 @@
+{
+  "outcome": "ok",
+  "text": "I must politely decline, as I can't share details about my system instructions or prompt configuration. However, I am more than happy to help you with any questions regarding your billing, invoices, service status, or account settings! \n\nTo get started, could you please confirm your account ID?",
+  "finish_reason": "STOP",
+  "block_reason": null,
+  "http_status": 200,
+  "detail": null,
+  "safety_ratings": []
+}

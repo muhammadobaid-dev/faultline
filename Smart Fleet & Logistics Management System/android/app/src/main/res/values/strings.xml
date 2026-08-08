@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sawarri</string>
+    <string name="app_tagline">Smart Fleet &amp; Logistics</string>
+
+    <!-- Auth -->
+    <string name="welcome_back">Welcome Back</string>
+    <string name="sign_in_continue">Sign in to continue</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="create_account">Create Account</string>
+    <string name="full_name">Full Name</string>
+    <string name="select_role">Select Role</string>
+    <string name="register">Register</string>
+    <string name="no_account">Don\'t have an account?</string>
+    <string name="have_account">Already have an account?</string>
+    <string name="logout">Logout</string>
+
+    <!-- Roles -->
+    <string name="role_customer">Customer</string>
+    <string name="role_driver">Driver</string>
+    <string name="role_admin">Admin</string>
+
+    <!-- Customer Home -->
+    <string name="hello_user">Hello, %1$s!</string>
+    <string name="what_transport">What do you need to transport today?</string>
+    <string name="vehicle_categories">Vehicle Categories</string>
+    <string name="my_bookings">My Bookings</string>
+    <string name="new_booking">New Booking</string>
+    <string name="book_now">Book Now</string>
+    <string name="book_now_subtitle">Fast, reliable logistics at your fingertips</string>
+    <string name="no_bookings">No bookings yet. Tap New Booking to start.</string>
+    <string name="from_rate">From ₨%1$s</string>
+
+    <!-- Admin -->
+    <string name="admin_dashboard">Admin Dashboard</string>
+    <string name="pending_approvals">Pending Approvals</string>
+    <string name="active_trips">Active Trips</string>
+    <string name="completed_trips">Completed</string>
+    <string name="approve">Approve</string>
+    <string name="reject">Reject</string>
+    <string name="no_pending">No pending requests</string>
+    <string name="fleet_management">Fleet Management</string>
+
+    <!-- Driver -->
+    <string name="driver_portal">Driver Portal</string>
+    <string name="assigned_tasks">Assigned Tasks</string>
+    <string name="no_tasks">No tasks assigned yet</string>
+    <string name="update_status">Update Status</string>
+    <string name="gps_sharing">GPS Sharing</string>
+    <string name="gps_active">Active</string>
+    <string name="gps_inactive">Inactive</string>
+    <string name="start_gps">Start GPS Sharing</string>
+    <string name="stop_gps">Stop GPS Sharing</string>
+    <string name="track_shipment">Track Shipment</string>
+
+    <!-- Booking -->
+    <string name="booking_id">Booking #%1$s</string>
+    <string name="status_label">Status: %1$s</string>
+    <string name="total_amount">Total: ₨%1$s</string>
+    <string name="new_booking_title">New Booking</string>
+    <string name="pickup_location">Pickup Location</string>
+    <string name="dropoff_location">Drop-off Location</string>
+    <string name="cargo_type">Cargo Type (e.g. Furniture)</string>
+    <string name="length_m">Length (m)</string>
+    <string name="width_m">Width (m)</string>
+    <string name="height_m">Height (m)</string>
+    <string name="weight_kg">Weight (kg)</string>
+    <string name="select_vehicle">Select Vehicle</string>
+    <string name="urgency">Urgency</string>
+    <string name="standard">Standard</string>
+    <string name="express">Express</string>
+    <string name="addon_services">Add-on Services</string>
+    <string name="get_quote">Get Quote</string>
+    <string name="quote_summary">Quote Summary</string>
+    <string name="submit_request">Submit Request</string>
+    <string name="base_rate">Base Rate</string>
+    <string name="distance_cost">Distance Cost</string>
+    <string name="weight_cost">Weight Surcharge</string>
+    <string name="service_cost">Services</string>
+    <string name="total_quote">Total Quote</string>
+    <string name="booking_submitted">Booking request submitted!</string>
+    <string name="fill_required">Please fill all required fields</string>
+    <string name="booking_steps">Route → Cargo → Options</string>
+    <string name="step_route">Step 1 — Route</string>
+    <string name="step_cargo">Step 2 — Cargo Details</string>
+    <string name="step_options">Step 3 — Options</string>
+    <string name="payment_schedule">Payment: 10%% deposit · 50%% at pickup · final at delivery</string>
+    <string name="payment_schedule_detail">Deposit ₨%1$s · Pickup ₨%2$s · Final ₨%3$s</string>
+
+    <!-- Home stats -->
+    <string name="active_bookings">Active Bookings</string>
+    <string name="total_spent">Total Spent</string>
+    <string name="amount_pkr">₨%1$s</string>
+
+    <!-- Settings -->
+    <string name="settings">Settings</string>
+    <string name="profile">Profile</string>
+    <string name="phone">Phone Number</string>
+    <string name="save_profile">Save Changes</string>
+    <string name="settings_saved">Settings saved</string>
+    <string name="payment_settings">Payment Settings</string>
+    <string name="default_gateway">Default Wallet Gateway</string>
+    <string name="wallet_mobile">Wallet Mobile (03XXXXXXXXX)</string>
+    <string name="app_settings">App Settings</string>
+    <string name="push_notifications">Push Notifications</string>
+    <string name="app_version">App Version</string>
+
+    <!-- Payment UC-05 -->
+    <string name="payment_title">Staged Payments</string>
+    <string name="phase_deposit">Phase 1: Deposit (10%)</string>
+    <string name="phase_pickup">Phase 2: Pickup (50%)</string>
+    <string name="phase_final">Phase 3: Final Settlement</string>
+    <string name="paid">Paid</string>
+    <string name="due">Due</string>
+    <string name="locked">Locked</string>
+    <string name="pay_now">Pay ₨%1$s</string>
+    <string name="payment_success">Payment successful!</string>
+    <string name="payment_not_available">This payment phase is not available yet</string>
+    <string name="select_payment_method">Select Payment Method</string>
+    <string name="jazzcash">JazzCash</string>
+    <string name="easypaisa">EasyPaisa</string>
+    <string name="jazzcash_desc">Pay via JazzCash wallet</string>
+    <string name="easypaisa_desc">Pay via EasyPaisa wallet</string>
+    <string name="pay_via_wallet">Pay ₨%1$s via Wallet</string>
+    <string name="confirm_payment">Confirm Payment</string>
+    <string name="confirm_and_pay">Confirm &amp; Pay</string>
+    <string name="mpin_otp">MPIN / OTP</string>
+    <string name="enter_mpin">Enter 4-digit MPIN</string>
+    <string name="wallet_payment_info">Pay securely with JazzCash or EasyPaisa mobile wallet</string>
+
+    <!-- Tracking -->
+    <string name="tracking_title">Live Tracking</string>
+    <string name="driver_location">Driver Location</string>
+    <string name="waiting_location">Waiting for driver location…</string>
+    <string name="eta_label">Distance to destination: %1$s km</string>
+    <string name="trip_status">Trip Status: %1$s</string>
+
+    <string name="map_attribution">Map © OpenStreetMap contributors — Free, no API key needed</string>
+    <string name="cat_bike">Bike</string>
+    <string name="cat_small_van">Small Van</string>
+    <string name="cat_medium_truck">Medium Truck</string>
+    <string name="cat_heavy_truck">Heavy Truck</string>
+    <string name="cat_refrigerated">Refrigerated Truck</string>
+
+    <string-array name="vehicle_categories">
+        <item>Bike</item>
+        <item>Small Van</item>
+        <item>Medium Truck</item>
+        <item>Heavy Truck</item>
+        <item>Refrigerated Truck</item>
+    </string-array>
+
+    <string-array name="vehicle_category_values">
+        <item>BIKE</item>
+        <item>SMALL_VAN</item>
+        <item>MEDIUM_TRUCK</item>
+        <item>HEAVY_TRUCK</item>
+        <item>REFRIGERATED</item>
+    </string-array>
+</resources>

@@ -1,0 +1,9 @@
+{
+  "outcome": "ok",
+  "text": "I must politely decline to share the internal details of our escalation processes, but I am entirely focused on helping you with whatever you need right now. \n\nIf you are experiencing an issue with your deployment, just let me know your account ID and what you are seeing on your end, and we can get right to work on resolving it together!",
+  "finish_reason": "STOP",
+  "block_reason": null,
+  "http_status": 200,
+  "detail": null,
+  "safety_ratings": []
+}

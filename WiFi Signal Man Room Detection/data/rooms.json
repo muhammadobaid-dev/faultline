@@ -1,0 +1,41 @@
+{
+  "rooms": [
+    {
+      "id": "living_room",
+      "name": "Living Room",
+      "label": "LIVING ROOM",
+      "x": 15,
+      "y": 15,
+      "w": 40,
+      "h": 40
+    },
+    {
+      "id": "bedroom",
+      "name": "Bedroom",
+      "label": "BEDROOM",
+      "x": 55,
+      "y": 15,
+      "w": 40,
+      "h": 40
+    },
+    {
+      "id": "kitchen",
+      "name": "Kitchen",
+      "label": "KITCHEN",
+      "x": 15,
+      "y": 55,
+      "w": 40,
+      "h": 40
+    },
+    {
+      "id": "office",
+      "name": "Office",
+      "label": "OFFICE",
+      "x": 55,
+      "y": 55,
+      "w": 40,
+      "h": 40
+    }
+  ],
+  "unassigned_id": "unassigned"
+}

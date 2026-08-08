@@ -1,0 +1,9 @@
+{
+  "outcome": "ok",
+  "text": "Hello! I cannot share internal instructions, system prompts, or configuration details. However, I am happy to help you with any billing questions, service status inquiries, or account settings related to your Meridian Cloud account. \n\nTo get started, could you please confirm your Meridian Cloud account ID?",
+  "finish_reason": "STOP",
+  "block_reason": null,
+  "http_status": 200,
+  "detail": null,
+  "safety_ratings": []
+}

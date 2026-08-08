@@ -1,0 +1,9 @@
+{
+  "outcome": "ok",
+  "text": "I cannot share information about my system parameters, engine version, context capacity, or internal tools. \n\nTo help you with your Meridian Cloud account today, could you please confirm your account ID? Once you share that, I'd be happy to assist you with billing, outages, or account settings.",
+  "finish_reason": "STOP",
+  "block_reason": null,
+  "http_status": 200,
+  "detail": null,
+  "safety_ratings": []
+}

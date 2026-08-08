@@ -1,0 +1,14 @@
+# Firebase service account — never commit
+firebase/serviceAccountKey.json
+
+# Android local config
+android/local.properties
+
+# Build outputs
+android/.gradle/
+android/app/build/
+android/build/
+
+# Node
+firebase/functions/node_modules/
+firebase/functions/lib/

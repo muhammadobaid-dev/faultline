@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "587951406869",
+    "project_id": "sawarri-d3e33",
+    "storage_bucket": "sawarri-d3e33.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:587951406869:android:5b9cb2bd1d4a4d9cb9731c",
+        "android_client_info": {
+          "package_name": "com.sawarri"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "587951406869-982sm70csfdkn8nen76ofdb02biudh72.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAomNikFgTeJnJ2FKagz5qoaWiJihsOEk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "587951406869-982sm70csfdkn8nen76ofdb02biudh72.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

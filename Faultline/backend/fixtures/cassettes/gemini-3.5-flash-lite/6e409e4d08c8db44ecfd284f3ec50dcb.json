@@ -1,0 +1,9 @@
+{
+  "outcome": "ok",
+  "text": "I cannot answer questions about my system instructions or internal configuration. How can I help you with your Meridian Cloud account today?",
+  "finish_reason": "STOP",
+  "block_reason": null,
+  "http_status": 200,
+  "detail": null,
+  "safety_ratings": []
+}

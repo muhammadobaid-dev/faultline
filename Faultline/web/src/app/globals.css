@@ -1,0 +1,276 @@
+@import "tailwindcss";
+
+/* Faultline: cool precision instrument.
+   Graphite stone, ink navy-black, one signal accent reserved for evidence
+   (the marked leak span) so the eye lands on the finding, not the chrome. */
+
+:root {
+  --paper: #eef1f4;
+  --paper-raised: #f7f8fa;
+  --ink: #0b1220;
+  --ink-soft: #3d4a5c;
+  --ink-faint: #5c6b7a;
+  --rule: #d5dbe3;
+  --amber: #d45a12;
+  --amber-text: #b8470a;
+  --amber-wash: #f5c49a;
+  --ok: #1f6b4f;
+  --fail: #b4232c;
+  --atmosphere: radial-gradient(
+      120% 80% at 12% -10%,
+      rgba(212, 90, 18, 0.08),
+      transparent 55%
+    ),
+    radial-gradient(90% 60% at 100% 0%, rgba(11, 18, 32, 0.06), transparent 50%),
+    linear-gradient(180deg, #f4f6f8 0%, var(--paper) 42%, var(--paper) 100%);
+  --grid-line: rgba(11, 18, 32, 0.045);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #080c12;
+    --paper-raised: #0f1520;
+    --ink: #e8edf4;
+    --ink-soft: #9aa8b8;
+    --ink-faint: #7a8898;
+    --rule: #1c2633;
+    --amber: #f07828;
+    --amber-text: #f07828;
+    --amber-wash: #5a3010;
+    --ok: #5dcea0;
+    --fail: #ff8a94;
+    --atmosphere: radial-gradient(
+        110% 70% at 8% -8%,
+        rgba(240, 120, 40, 0.12),
+        transparent 50%
+      ),
+      radial-gradient(80% 50% at 100% 0%, rgba(80, 120, 180, 0.08), transparent 45%),
+      linear-gradient(180deg, #0a1018 0%, var(--paper) 40%, var(--paper) 100%);
+    --grid-line: rgba(232, 237, 244, 0.04);
+  }
+}
+
+:root[data-theme="light"] {
+  --paper: #eef1f4;
+  --paper-raised: #f7f8fa;
+  --ink: #0b1220;
+  --ink-soft: #3d4a5c;
+  --ink-faint: #5c6b7a;
+  --rule: #d5dbe3;
+  --amber: #d45a12;
+  --amber-text: #b8470a;
+  --amber-wash: #f5c49a;
+  --ok: #1f6b4f;
+  --fail: #b4232c;
+  --atmosphere: radial-gradient(
+      120% 80% at 12% -10%,
+      rgba(212, 90, 18, 0.08),
+      transparent 55%
+    ),
+    radial-gradient(90% 60% at 100% 0%, rgba(11, 18, 32, 0.06), transparent 50%),
+    linear-gradient(180deg, #f4f6f8 0%, var(--paper) 42%, var(--paper) 100%);
+  --grid-line: rgba(11, 18, 32, 0.045);
+}
+
+:root[data-theme="dark"] {
+  --paper: #080c12;
+  --paper-raised: #0f1520;
+  --ink: #e8edf4;
+  --ink-soft: #9aa8b8;
+  --ink-faint: #7a8898;
+  --rule: #1c2633;
+  --amber: #f07828;
+  --amber-text: #f07828;
+  --amber-wash: #5a3010;
+  --ok: #5dcea0;
+  --fail: #ff8a94;
+  --atmosphere: radial-gradient(
+      110% 70% at 8% -8%,
+      rgba(240, 120, 40, 0.12),
+      transparent 50%
+    ),
+    radial-gradient(80% 50% at 100% 0%, rgba(80, 120, 180, 0.08), transparent 45%),
+    linear-gradient(180deg, #0a1018 0%, var(--paper) 40%, var(--paper) 100%);
+  --grid-line: rgba(232, 237, 244, 0.04);
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-rule: var(--rule);
+  --color-amber: var(--amber);
+  --color-amber-text: var(--amber-text);
+  --color-ok: var(--ok);
+  --color-fail: var(--fail);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.site-atmosphere {
+  background: var(--atmosphere);
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);
+}
+
+/* Evidence mark: underline wash, not a filled box. */
+mark.leak {
+  background: linear-gradient(
+    to bottom,
+    transparent 48%,
+    var(--amber-wash) 48%,
+    var(--amber-wash) 92%,
+    transparent 92%
+  );
+  color: inherit;
+  border-bottom: 2px solid var(--amber);
+  padding: 0 0.06em;
+}
+
+.eyebrow {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+a.eyebrow,
+button.eyebrow,
+summary .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+}
+
+.transcript {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@keyframes reveal-line {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes soft-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.rise {
+  animation: rise 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.rise-delayed {
+  animation-delay: 100ms;
+}
+
+.rise-late {
+  animation-delay: 200ms;
+}
+
+.reveal-line {
+  transform-origin: left center;
+  animation: reveal-line 700ms cubic-bezier(0.22, 1, 0.36, 1) 180ms both;
+}
+
+.soft-in {
+  animation: soft-in 500ms ease-out 280ms both;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+.toast-in {
+  animation: toast-in 180ms ease-out;
+}
+
+@keyframes line-in {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+}
+
+.line-in {
+  animation: line-in 220ms ease-out;
+}
+
+.when-dark {
+  display: none;
+}
+:root[data-theme="dark"] .when-dark {
+  display: inline;
+}
+:root[data-theme="dark"] .when-light {
+  display: none;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .when-dark {
+    display: inline;
+  }
+  :root:not([data-theme]) .when-light {
+    display: none;
+  }
+}
+
+*:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .rise,
+  .rise-delayed,
+  .rise-late,
+  .soft-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  .reveal-line {
+    transform: none;
+  }
+}

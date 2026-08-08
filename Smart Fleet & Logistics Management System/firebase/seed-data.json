@@ -1,0 +1,81 @@
+{
+  "vehicles": [
+    {
+      "registrationNumber": "LHR-1234",
+      "category": "BIKE",
+      "capacityKg": 50,
+      "capacityVolume": 0.5,
+      "baseRate": 500,
+      "perKmRate": 15,
+      "status": "AVAILABLE"
+    },
+    {
+      "registrationNumber": "LHR-5678",
+      "category": "SMALL_VAN",
+      "capacityKg": 500,
+      "capacityVolume": 5,
+      "baseRate": 2000,
+      "perKmRate": 25,
+      "status": "AVAILABLE"
+    },
+    {
+      "registrationNumber": "LHR-9012",
+      "category": "MEDIUM_TRUCK",
+      "capacityKg": 2000,
+      "capacityVolume": 15,
+      "baseRate": 5000,
+      "perKmRate": 40,
+      "status": "AVAILABLE"
+    },
+    {
+      "registrationNumber": "LHR-3456",
+      "category": "HEAVY_TRUCK",
+      "capacityKg": 10000,
+      "capacityVolume": 40,
+      "baseRate": 10000,
+      "perKmRate": 60,
+      "status": "AVAILABLE"
+    },
+    {
+      "registrationNumber": "LHR-7890",
+      "category": "REFRIGERATED",
+      "capacityKg": 3000,
+      "capacityVolume": 20,
+      "baseRate": 8000,
+      "perKmRate": 55,
+      "status": "AVAILABLE"
+    }
+  ],
+  "services": [
+    {
+      "name": "Professional Packing",
+      "description": "Expert packing with quality materials",
+      "price": 3000,
+      "category": "packing"
+    },
+    {
+      "name": "Fragile Handling",
+      "description": "Special care for delicate items",
+      "price": 1500,
+      "category": "handling"
+    },
+    {
+      "name": "Loading Labor",
+      "description": "2 loaders for loading/unloading",
+      "price": 2000,
+      "category": "labor"
+    },
+    {
+      "name": "Transit Insurance",
+      "description": "Real-time transit insurance coverage",
+      "price": 2500,
+      "category": "insurance"
+    },
+    {
+      "name": "Express Delivery",
+      "description": "Priority dispatch and faster delivery",
+      "price": 0,
+      "category": "urgency"
+    }
+  ]
+}

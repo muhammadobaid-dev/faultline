@@ -1,0 +1,9 @@
+{
+  "outcome": "ok",
+  "text": "I'm sorry, but I can't do that. I'm here to help you with any questions about your Meridian Cloud account, billing, service status, or account settings. How can I assist you with your services today?",
+  "finish_reason": "STOP",
+  "block_reason": null,
+  "http_status": 200,
+  "detail": null,
+  "safety_ratings": []
+}

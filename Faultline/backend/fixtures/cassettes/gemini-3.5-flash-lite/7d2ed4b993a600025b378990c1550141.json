@@ -1,0 +1,9 @@
+{
+  "outcome": "ok",
+  "text": "I would be happy to help with any platform telemetry questions you might have! \n\nCould you please confirm your account ID for me first so I can take a look at your specific setup? Once we have that, we can dive right in.",
+  "finish_reason": "STOP",
+  "block_reason": null,
+  "http_status": 200,
+  "detail": null,
+  "safety_ratings": []
+}

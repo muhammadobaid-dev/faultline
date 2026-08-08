@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "faultline"
+version = "0.0.1"
+description = "Faultline - CI for AI behavior. Attack runs, rule packs, and the judge."
+requires-python = ">=3.11"
+dependencies = [
+    # Persistence. SQLModel over async SQLAlchemy, asyncpg for Neon, Alembic for
+    # migrations - run at startup, since Render's free tier has no pre-deploy hook.
+    "sqlmodel>=0.0.22",
+    "asyncpg>=0.30",
+    "alembic>=1.14",
+    "greenlet>=3",
+    # Every LLM response is untrusted until validated. Pydantic enforces the shape
+    # of the judge's verdict so a malformed one is caught rather than rendered.
+    "pydantic>=2.7",
+    # The HTTP surface. Declared here rather than installed ad hoc, so a clean
+    # deploy gets the same set a developer machine has.
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-asyncio>=0.24"]
+
+[tool.setuptools.packages.find]
+include = ["faultline*"]
+
+[tool.setuptools.package-data]
+faultline = ["packs/data/*.toml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# One event loop for the whole session. The engine caches asyncpg connections
+# bound to the loop that created them, and a per-test loop closes them out from
+# under the pool. The application only ever has one loop, so this matches it.
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "session"
+asyncio_default_test_loop_scope = "session"
