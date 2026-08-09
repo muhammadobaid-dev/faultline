@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ObaidGPT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Sora:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='styles.css') }}"
+    >
+</head>
+<body class="chat-page">
+
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-brand">
+                    <div class="brand-mark" aria-hidden="true">O</div>
+                    <h2>ObaidGPT</h2>
+                </div>
+                <button
+                    type="button"
+                    class="sidebar-close"
+                    id="sidebar-close"
+                    aria-label="Close sidebar"
+                >
+                    ×
+                </button>
+            </div>
+
+            <form id="new-chat-form">
+                <button type="submit" class="new-chat-button">
+                    + New Chat
+                </button>
+            </form>
+
+            <nav
+                class="conversation-list"
+                id="conversation-list"
+            ></nav>
+
+            <div class="sidebar-footer">
+                <p class="developer-credit">
+                    Developed by<br>
+                    <strong>MUHAMMAD OBAID</strong>
+                </p>
+            </div>
+        </aside>
+
+        <section class="chat-panel">
+            <header class="chat-header">
+                <div class="header-left">
+                    <button
+                        type="button"
+                        class="sidebar-toggle"
+                        id="sidebar-toggle"
+                        aria-label="Toggle sidebar"
+                    >
+                        ☰
+                    </button>
+                    <div>
+                        <h1>ObaidGPT</h1>
+                        <p id="current-user">Checking your session...</p>
+                    </div>
+                </div>
+
+                <button
+                    type="button"
+                    class="logout-link"
+                    id="logout-button"
+                >
+                    Log out
+                </button>
+            </header>
+
+            <main class="chat-messages" id="chat-messages">
+                <div class="empty-chat">
+                    <div class="empty-icon" aria-hidden="true">O</div>
+                    <h2>How can I help you today?</h2>
+                    <p>Send a message to begin this conversation.</p>
+                </div>
+            </main>
+
+            <footer class="chat-composer">
+                <form class="message-form" id="message-form">
+                    <textarea
+                        id="message"
+                        name="message"
+                        placeholder="Message ObaidGPT..."
+                        rows="1"
+                        required
+                        autofocus
+                    ></textarea>
+                    <button type="submit" id="send-button">
+                        Send
+                    </button>
+                </form>
+                <p class="composer-hint">
+                    Developed by MUHAMMAD OBAID
+                </p>
+            </footer>
+        </section>
+    </div>
+
+    <script>
+        window.BACKEND_URL = {{ backend_url | tojson }};
+        window.INITIAL_CONVERSATION_ID =
+            {{ conversation_id | tojson }};
+    </script>
+    <script src="{{ url_for('static', filename='chat.js') }}"></script>
+</body>
+</html>

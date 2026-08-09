@@ -1,0 +1,5 @@
+# ObaidGPT
+
+a free AI Chat application template with Flask front end, FastAPI backend, PostgreSQL database, OpenRouter LLM provider, OpenAI Python SDK, and NVIDIA Nemotron open weights LLM model.
+
+coming soon...

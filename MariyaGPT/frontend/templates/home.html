@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ObaidGPT — Sign in</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Sora:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='styles.css') }}"
+    >
+</head>
+<body class="login-page">
+
+    <div class="login-card">
+        <div class="login-brand">
+            <div class="login-logo" aria-hidden="true">O</div>
+            <div>
+                <h1>ObaidGPT</h1>
+                <p>Your personal AI assistant</p>
+            </div>
+        </div>
+
+        <div class="login-heading">
+            <h2>Welcome back</h2>
+            <p>Log in to continue your conversations.</p>
+        </div>
+
+        <p id="login-error" class="error-message login-error"></p>
+
+        <form id="login-form" class="login-form">
+            <div class="login-field">
+                <label for="username">Username</label>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Enter your username"
+                    required
+                    autofocus
+                    autocomplete="username"
+                >
+            </div>
+
+            <div class="login-field">
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                    autocomplete="current-password"
+                >
+            </div>
+
+            <button type="submit" class="login-button">
+                Log in
+            </button>
+        </form>
+
+        <p class="login-switch">
+            Don't have an account?
+            <a href="{{ url_for('register') }}">Create one</a>
+        </p>
+    </div>
+
+    <p class="page-credit">
+        Developed by <strong>MUHAMMAD OBAID</strong>
+    </p>
+
+    <script>
+        window.BACKEND_URL = {{ backend_url | tojson }};
+    </script>
+    <script src="{{ url_for('static', filename='login.js') }}"></script>
+</body>
+</html>
