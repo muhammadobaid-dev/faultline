@@ -31,12 +31,21 @@
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.Sawarri.Headline" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Tap a task → update status · start GPS"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp" />
+
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_md"
+            app:cardBackgroundColor="@color/teal_light"
             app:cardCornerRadius="@dimen/radius_lg"
-            app:cardElevation="2dp">
+            app:cardElevation="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"

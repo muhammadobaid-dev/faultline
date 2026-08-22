@@ -13,7 +13,7 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="200dp"
             android:background="@drawable/bg_gradient_primary">
 
             <LinearLayout
@@ -26,27 +26,38 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/create_account"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_headline"
+                    android:letterSpacing="0.06"
+                    android:text="@string/app_name"
+                    android:textColor="@color/accent"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_xs"
-                    android:text="@string/app_tagline"
-                    android:textColor="#B3FFFFFF" />
+                    android:layout_marginTop="4dp"
+                    android:text="@string/create_account"
+                    android:textColor="@color/white"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/register_subtitle"
+                    android:textColor="#B3FFFFFF"
+                    android:textSize="13sp" />
             </LinearLayout>
         </FrameLayout>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/spacing_lg"
-            android:layout_marginTop="-28dp"
+            android:layout_marginHorizontal="@dimen/spacing_md"
+            android:layout_marginTop="-24dp"
             app:cardCornerRadius="@dimen/radius_xl"
-            app:cardElevation="8dp">
+            app:cardElevation="6dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -54,40 +65,98 @@
                 android:orientation="vertical"
                 android:padding="@dimen/spacing_lg">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/personal_details"
+                    android:textAppearance="@style/TextAppearance.Sawarri.SectionHeader" />
+
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.Sawarri.TextInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_md"
                     android:hint="@string/full_name">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:maxLines="1" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.Sawarri.TextInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_md"
-                    android:hint="@string/email">
+                    android:layout_marginTop="@dimen/spacing_sm"
+                    android:hint="@string/username"
+                    app:helperText="@string/username_hint">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etUsername"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textVisiblePassword"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Sawarri.TextInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_sm"
+                    android:hint="@string/email"
+                    app:startIconDrawable="@android:drawable/ic_dialog_email">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textEmailAddress" />
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.Sawarri.TextInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_md"
+                    android:layout_marginTop="@dimen/spacing_sm"
+                    android:hint="@string/mobile_number"
+                    app:prefixText="+92 ">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="phone"
+                        android:maxLength="11" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Sawarri.TextInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_sm"
+                    android:hint="@string/address">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPostalAddress"
+                        android:minLines="2" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Sawarri.TextInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_sm"
                     android:hint="@string/password"
-                    app:endIconMode="password_toggle">
+                    app:endIconMode="password_toggle"
+                    app:helperText="@string/password_hint">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etPassword"
@@ -99,19 +168,48 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_md"
+                    android:layout_marginTop="@dimen/spacing_lg"
                     android:text="@string/select_role"
-                    android:textColor="@color/text_secondary"
-                    android:textSize="@dimen/text_caption"
-                    android:textStyle="bold" />
+                    android:textAppearance="@style/TextAppearance.Sawarri.SectionHeader" />
 
-                <Spinner
-                    android:id="@+id/spinnerRole"
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipRoleGroup"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacing_sm"
-                    android:background="@drawable/bg_card"
-                    android:paddingHorizontal="@dimen/spacing_sm" />
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipCustomer"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="@string/role_customer" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipDriver"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/role_driver" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipAdmin"
+                        style="@style/Widget.Material3.Chip.Filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/role_admin" />
+                </com.google.android.material.chip.ChipGroup>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_md"
+                    android:text="@string/userid_auto_note"
+                    android:textColor="@color/text_hint"
+                    android:textSize="12sp" />
 
                 <ProgressBar
                     android:id="@+id/progressBar"
@@ -127,7 +225,7 @@
                     style="@style/Widget.Sawarri.Button.Primary"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/button_height"
-                    android:layout_marginTop="@dimen/spacing_lg"
+                    android:layout_marginTop="@dimen/spacing_md"
                     android:text="@string/register" />
 
                 <TextView
@@ -136,6 +234,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/spacing_md"
+                    android:padding="@dimen/spacing_sm"
                     android:text="@string/have_account"
                     android:textColor="@color/accent_dark"
                     android:textStyle="bold" />

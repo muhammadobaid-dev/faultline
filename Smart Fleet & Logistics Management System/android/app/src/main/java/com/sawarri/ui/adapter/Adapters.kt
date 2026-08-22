@@ -95,6 +95,7 @@ class BookingAdapter(
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvId: TextView = itemView.findViewById(R.id.tvBookingId)
         private val tvRoute: TextView = itemView.findViewById(R.id.tvRoute)
+        private val tvOrderMessage: TextView = itemView.findViewById(R.id.tvOrderMessage)
         private val tvStatus: TextView = itemView.findViewById(R.id.tvStatus)
         private val tvAmount: TextView = itemView.findViewById(R.id.tvAmount)
         private val layoutActions: LinearLayout = itemView.findViewById(R.id.layoutActions)
@@ -111,6 +112,7 @@ class BookingAdapter(
             val ctx = itemView.context
             tvId.text = ctx.getString(R.string.booking_id, booking.id.take(8).uppercase())
             tvRoute.text = "${booking.pickup.address}  →  ${booking.dropoff.address}"
+            tvOrderMessage.text = UiHelper.customerOrderMessage(booking.status)
             UiHelper.applyStatusChip(tvStatus, booking.status)
             tvAmount.text = ctx.getString(
                 R.string.total_amount,

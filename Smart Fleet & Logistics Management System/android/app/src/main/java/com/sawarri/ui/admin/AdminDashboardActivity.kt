@@ -41,20 +41,25 @@ class AdminDashboardActivity : AppCompatActivity() {
 
         pendingAdapter = BookingAdapter(
             showActions = true,
-            onApprove = { booking ->
-                adminViewModel.approveBooking(booking.id)
-                Toast.makeText(this, "Booking approved", Toast.LENGTH_SHORT).show()
-            },
-            onReject = { booking ->
-                adminViewModel.rejectBooking(booking.id)
-                Toast.makeText(this, "Booking rejected", Toast.LENGTH_SHORT).show()
-            }
+            onApprove = { booking -> adminViewModel.approveBooking(booking.id) },
+            onReject = { booking -> adminViewModel.rejectBooking(booking.id) }
         )
 
         rvPending.layoutManager = LinearLayoutManager(this)
         rvPending.adapter = pendingAdapter
 
         adminViewModel.loadDashboard()
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                adminViewModel.adminMessage.collect { msg ->
+                    if (msg != null) {
+                        Toast.makeText(this@AdminDashboardActivity, msg, Toast.LENGTH_LONG).show()
+                        adminViewModel.consumeMessage()
+                    }
+                }
+            }
+        }
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {

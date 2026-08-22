@@ -35,9 +35,11 @@ object QuotingEngine {
     ): Quote {
         val rates = vehicleRates[vehicleCategory.uppercase()] ?: vehicleRates["SMALL_VAN"]!!
         val baseRate = rates.first
-        val distanceCost = distanceKm * rates.second
+        val safeDistance = distanceKm.coerceIn(1.0, 800.0)
+        val distanceCost = safeDistance * rates.second
         val weightCost = max(0.0, weightKg - 100) * 5
-        val volumeCost = lengthM * widthM * heightM * 200
+        val volumeM3 = (lengthM * widthM * heightM).coerceIn(0.0, 80.0)
+        val volumeCost = volumeM3 * 200
         val serviceCost = services.sumOf { it.price }
         val subtotal = baseRate + distanceCost + weightCost + volumeCost + serviceCost
         val urgencyMultiplier = if (urgency.equals("express", true)) 1.5 else 1.0

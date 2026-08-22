@@ -7,9 +7,12 @@ enum class UserRole { CUSTOMER, DRIVER, LOADER, ADMIN }
 
 data class User(
     val id: String = "",
-    val email: String = "",
-    val phone: String = "",
+    val userId: String = "",
     val name: String = "",
+    val username: String = "",
+    val email: String = "",
+    val address: String = "",
+    val phone: String = "",
     val role: UserRole = UserRole.CUSTOMER,
     val profileImage: String = "",
     val fcmToken: String = "",

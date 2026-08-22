@@ -2,13 +2,14 @@ package com.sawarri.ui.auth
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.google.android.material.chip.Chip
+import com.google.android.material.textfield.TextInputEditText
 import com.sawarri.R
 import com.sawarri.data.model.UserRole
 import com.sawarri.ui.viewmodel.AuthState
@@ -19,40 +20,50 @@ import kotlinx.coroutines.launch
 class RegisterActivity : AppCompatActivity() {
 
     private val authViewModel: AuthViewModel by viewModels()
-    private val roles = listOf(UserRole.CUSTOMER, UserRole.DRIVER, UserRole.ADMIN)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        val etName = findViewById<android.widget.EditText>(R.id.etName)
-        val etEmail = findViewById<android.widget.EditText>(R.id.etEmail)
-        val etPassword = findViewById<android.widget.EditText>(R.id.etPassword)
-        val spinnerRole = findViewById<android.widget.Spinner>(R.id.spinnerRole)
-        val progressBar = findViewById<android.widget.ProgressBar>(R.id.progressBar)
-        val btnRegister = findViewById<android.widget.Button>(R.id.btnRegister)
-        val tvLogin = findViewById<android.widget.TextView>(R.id.tvLogin)
-
-        val roleLabels = listOf(
-            getString(R.string.role_customer),
-            getString(R.string.role_driver),
-            getString(R.string.role_admin)
-        )
-        spinnerRole.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, roleLabels)
+        val etName = findViewById<TextInputEditText>(R.id.etName)
+        val etUsername = findViewById<TextInputEditText>(R.id.etUsername)
+        val etEmail = findViewById<TextInputEditText>(R.id.etEmail)
+        val etPhone = findViewById<TextInputEditText>(R.id.etPhone)
+        val etAddress = findViewById<TextInputEditText>(R.id.etAddress)
+        val etPassword = findViewById<TextInputEditText>(R.id.etPassword)
+        val progressBar = findViewById<View>(R.id.progressBar)
+        val btnRegister = findViewById<View>(R.id.btnRegister)
+        val chipCustomer = findViewById<Chip>(R.id.chipCustomer)
+        val chipDriver = findViewById<Chip>(R.id.chipDriver)
+        val chipAdmin = findViewById<Chip>(R.id.chipAdmin)
 
         btnRegister.setOnClickListener {
             val name = etName.text.toString().trim()
+            val username = etUsername.text.toString().trim()
             val email = etEmail.text.toString().trim()
-            val password = etPassword.text.toString().trim()
-            if (name.isEmpty() || email.isEmpty() || password.length < 6) {
-                Toast.makeText(this, "Name, email required. Password min 6 chars.", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+            val phone = etPhone.text.toString().trim()
+            val address = etAddress.text.toString().trim()
+            val password = etPassword.text.toString()
+
+            when {
+                name.isEmpty() -> toast(R.string.fill_name)
+                username.isEmpty() -> toast(R.string.fill_username)
+                email.isEmpty() || !email.contains("@") -> toast(R.string.fill_email)
+                phone.length < 11 -> toast(R.string.fill_mobile)
+                address.isEmpty() -> toast(R.string.fill_address)
+                password.length < 6 -> toast(R.string.password_hint)
+                else -> {
+                    val role = when {
+                        chipAdmin.isChecked -> UserRole.ADMIN
+                        chipDriver.isChecked -> UserRole.DRIVER
+                        else -> UserRole.CUSTOMER
+                    }
+                    authViewModel.register(name, username, email, password, address, phone, role)
+                }
             }
-            val role = roles[spinnerRole.selectedItemPosition]
-            authViewModel.register(email, password, name, role)
         }
 
-        tvLogin.setOnClickListener { finish() }
+        findViewById<View>(R.id.tvLogin).setOnClickListener { finish() }
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -61,7 +72,11 @@ class RegisterActivity : AppCompatActivity() {
                         is AuthState.Loading -> progressBar.visibility = View.VISIBLE
                         is AuthState.Success -> {
                             progressBar.visibility = View.GONE
-                            Toast.makeText(this@RegisterActivity, "Account created!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                this@RegisterActivity,
+                                getString(R.string.account_created, state.user.userId),
+                                Toast.LENGTH_LONG
+                            ).show()
                             NavigationHelper.navigateByRole(this@RegisterActivity, state.user)
                             finish()
                         }
@@ -76,4 +91,7 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun toast(res: Int) =
+        Toast.makeText(this, res, Toast.LENGTH_SHORT).show()
 }

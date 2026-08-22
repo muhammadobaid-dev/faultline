@@ -64,6 +64,7 @@ dependencies {
     implementation("com.google.firebase:firebase-storage-ktx")
 
     implementation("com.google.android.gms:play-services-location:21.0.1")
+    implementation("com.google.android.gms:play-services-base:18.3.0")
 
     // Free OpenStreetMap — no API key required
     implementation("org.osmdroid:osmdroid-android:6.1.18")

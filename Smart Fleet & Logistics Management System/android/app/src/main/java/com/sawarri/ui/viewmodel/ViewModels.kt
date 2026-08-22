@@ -17,10 +17,10 @@ class AuthViewModel(
     private val _currentUser = MutableStateFlow<User?>(null)
     val currentUser: StateFlow<User?> = _currentUser.asStateFlow()
 
-    fun login(email: String, password: String) {
+    fun login(identifier: String, password: String) {
         viewModelScope.launch {
             _authState.value = AuthState.Loading
-            authRepository.loginWithEmail(email, password)
+            authRepository.login(identifier, password)
                 .onSuccess { user ->
                     _currentUser.value = user
                     _authState.value = AuthState.Success(user)
@@ -29,15 +29,35 @@ class AuthViewModel(
         }
     }
 
-    fun register(email: String, password: String, name: String, role: UserRole) {
+    fun register(
+        name: String,
+        username: String,
+        email: String,
+        password: String,
+        address: String,
+        phone: String,
+        role: UserRole
+    ) {
         viewModelScope.launch {
             _authState.value = AuthState.Loading
-            authRepository.registerWithEmail(email, password, name, role)
+            authRepository.register(name, username, email, password, address, phone, role)
                 .onSuccess { user ->
                     _currentUser.value = user
                     _authState.value = AuthState.Success(user)
                 }
                 .onFailure { _authState.value = AuthState.Error(it.message ?: "Registration failed") }
+        }
+    }
+
+    fun updateProfile(name: String, username: String, address: String, phone: String) {
+        viewModelScope.launch {
+            _authState.value = AuthState.Loading
+            authRepository.updateRegistrationInfo(name, username, address, phone)
+                .onSuccess { user ->
+                    _currentUser.value = user
+                    _authState.value = AuthState.Success(user)
+                }
+                .onFailure { _authState.value = AuthState.Error(it.message ?: "Update failed") }
         }
     }
 
@@ -99,8 +119,11 @@ class BookingViewModel(
     private val _services = MutableStateFlow<List<Service>>(emptyList())
     val services: StateFlow<List<Service>> = _services.asStateFlow()
 
+    private var bookingsJob: kotlinx.coroutines.Job? = null
+
     fun loadCustomerBookings(customerId: String) {
-        viewModelScope.launch {
+        bookingsJob?.cancel()
+        bookingsJob = viewModelScope.launch {
             bookingRepository.getCustomerBookings(customerId).collect {
                 _bookings.value = it
             }
@@ -108,7 +131,8 @@ class BookingViewModel(
     }
 
     fun loadDriverBookings(driverId: String) {
-        viewModelScope.launch {
+        bookingsJob?.cancel()
+        bookingsJob = viewModelScope.launch {
             bookingRepository.getDriverBookings(driverId).collect {
                 _bookings.value = it
             }
@@ -230,6 +254,7 @@ class PaymentViewModel(
             paymentRepository.completePayment(
                 booking.id, phase, amount, booking.customerId, gatewayRef
             ).onSuccess {
+                bookingRepository.getBookingById(booking.id).onSuccess { _booking.value = it }
                 _paymentState.value = PaymentState.Completed(phase.name)
             }.onFailure {
                 _paymentState.value = PaymentState.Error(it.message ?: "Payment failed")
@@ -265,6 +290,9 @@ class AdminViewModel(
     private val _activeBookings = MutableStateFlow<List<Booking>>(emptyList())
     val activeBookings: StateFlow<List<Booking>> = _activeBookings.asStateFlow()
 
+    private val _adminMessage = MutableStateFlow<String?>(null)
+    val adminMessage: StateFlow<String?> = _adminMessage.asStateFlow()
+
     fun loadDashboard() {
         viewModelScope.launch {
             launch {
@@ -277,10 +305,22 @@ class AdminViewModel(
     }
 
     fun approveBooking(bookingId: String) {
-        viewModelScope.launch { adminRepository.approveBooking(bookingId) }
+        viewModelScope.launch {
+            adminRepository.approveBooking(bookingId)
+                .onSuccess { _adminMessage.value = "Approved — driver assigned. Customer ab deposit pay kare." }
+                .onFailure { _adminMessage.value = it.message ?: "Approve failed" }
+        }
     }
 
     fun rejectBooking(bookingId: String) {
-        viewModelScope.launch { adminRepository.rejectBooking(bookingId) }
+        viewModelScope.launch {
+            adminRepository.rejectBooking(bookingId)
+                .onSuccess { _adminMessage.value = "Booking rejected" }
+                .onFailure { _adminMessage.value = it.message ?: "Reject failed" }
+        }
+    }
+
+    fun consumeMessage() {
+        _adminMessage.value = null
     }
 }

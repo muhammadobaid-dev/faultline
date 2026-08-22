@@ -6,16 +6,36 @@
     <!-- Auth -->
     <string name="welcome_back">Welcome Back</string>
     <string name="sign_in_continue">Sign in to continue</string>
+    <string name="login_with_username_hint">Sign in with username or email</string>
+    <string name="username_or_email">Username or Email</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="password_hint">Minimum 6 characters</string>
     <string name="sign_in">Sign In</string>
     <string name="create_account">Create Account</string>
+    <string name="register_subtitle">Join Sawarri logistics platform</string>
+    <string name="personal_details">Personal Details</string>
     <string name="full_name">Full Name</string>
+    <string name="username">Username</string>
+    <string name="username_hint">3–20 chars (letters, numbers, . _)</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="address">Address</string>
+    <string name="userid_auto_note">User ID is generated after registration (Firebase, or local demo if Firebase unreachable).</string>
+    <string name="account_created">Account created! Your User ID: %1$s</string>
+    <string name="fill_name">Please enter full name</string>
+    <string name="fill_username">Please enter username</string>
+    <string name="fill_email">Please enter a valid email</string>
+    <string name="fill_mobile">Please enter mobile (03XXXXXXXXX)</string>
+    <string name="fill_address">Please enter address</string>
     <string name="select_role">Select Role</string>
     <string name="register">Register</string>
     <string name="no_account">Don\'t have an account?</string>
-    <string name="have_account">Already have an account?</string>
+    <string name="have_account">Already have an account? Sign in</string>
     <string name="logout">Logout</string>
+    <string name="powered_by_firebase">Secured with Firebase Authentication</string>
+    <string name="edit_registration">Edit Registration Info</string>
+    <string name="edit_registration_hint">Update your profile details saved in the database</string>
+    <string name="system_user_id">System User ID</string>
 
     <!-- Roles -->
     <string name="role_customer">Customer</string>
@@ -27,6 +47,10 @@
     <string name="what_transport">What do you need to transport today?</string>
     <string name="vehicle_categories">Vehicle Categories</string>
     <string name="my_bookings">My Bookings</string>
+    <string name="active_trip">Active Trip</string>
+    <string name="view_trip_details">View / Pay / Track</string>
+    <string name="pay_now_action">Pay Now</string>
+    <string name="track_trip_action">Track Live</string>
     <string name="new_booking">New Booking</string>
     <string name="book_now">Book Now</string>
     <string name="book_now_subtitle">Fast, reliable logistics at your fingertips</string>
@@ -40,13 +64,13 @@
     <string name="completed_trips">Completed</string>
     <string name="approve">Approve</string>
     <string name="reject">Reject</string>
-    <string name="no_pending">No pending requests</string>
+    <string name="no_pending">No pending requests — customer booking ke baad yahan dikhega</string>
     <string name="fleet_management">Fleet Management</string>
 
     <!-- Driver -->
     <string name="driver_portal">Driver Portal</string>
     <string name="assigned_tasks">Assigned Tasks</string>
-    <string name="no_tasks">No tasks assigned yet</string>
+    <string name="no_tasks">No tasks yet. Admin approve kare + Driver account pehle banao</string>
     <string name="update_status">Update Status</string>
     <string name="gps_sharing">GPS Sharing</string>
     <string name="gps_active">Active</string>
@@ -128,7 +152,7 @@
     <string name="confirm_and_pay">Confirm &amp; Pay</string>
     <string name="mpin_otp">MPIN / OTP</string>
     <string name="enter_mpin">Enter 4-digit MPIN</string>
-    <string name="wallet_payment_info">Pay securely with JazzCash or EasyPaisa mobile wallet</string>
+    <string name="wallet_payment_info">JazzCash / EasyPaisa wallet se pay karein (demo gateway)</string>
 
     <!-- Tracking -->
     <string name="tracking_title">Live Tracking</string>

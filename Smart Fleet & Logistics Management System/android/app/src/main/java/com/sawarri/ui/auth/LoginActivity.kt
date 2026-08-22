@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.google.android.material.textfield.TextInputEditText
 import com.sawarri.R
 import com.sawarri.ui.viewmodel.AuthState
 import com.sawarri.ui.viewmodel.AuthViewModel
@@ -23,23 +24,21 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val etEmail = findViewById<android.widget.EditText>(R.id.etEmail)
-        val etPassword = findViewById<android.widget.EditText>(R.id.etPassword)
-        val progressBar = findViewById<android.widget.ProgressBar>(R.id.progressBar)
-        val btnSignIn = findViewById<android.widget.Button>(R.id.btnSignIn)
-        val tvRegister = findViewById<android.widget.TextView>(R.id.tvRegister)
+        val etIdentifier = findViewById<TextInputEditText>(R.id.etEmail)
+        val etPassword = findViewById<TextInputEditText>(R.id.etPassword)
+        val progressBar = findViewById<View>(R.id.progressBar)
 
-        btnSignIn.setOnClickListener {
-            val email = etEmail.text.toString().trim()
-            val password = etPassword.text.toString().trim()
-            if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+        findViewById<View>(R.id.btnSignIn).setOnClickListener {
+            val identifier = etIdentifier.text.toString().trim()
+            val password = etPassword.text.toString()
+            if (identifier.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, R.string.fill_required, Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            authViewModel.login(email, password)
+            authViewModel.login(identifier, password)
         }
 
-        tvRegister.setOnClickListener {
+        findViewById<View>(R.id.tvRegister).setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
 

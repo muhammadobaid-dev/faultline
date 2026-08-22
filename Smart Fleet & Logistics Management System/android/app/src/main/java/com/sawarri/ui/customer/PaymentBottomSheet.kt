@@ -13,6 +13,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.sawarri.R
 import com.sawarri.data.model.Booking
 import com.sawarri.data.model.PaymentPhase
+import com.sawarri.data.repository.AuthRepository
 import com.sawarri.payment.PaymentGateway
 import com.sawarri.payment.PaymentGatewayService
 import com.sawarri.util.AppPreferences
@@ -71,8 +72,13 @@ class PaymentBottomSheet : BottomSheetDialogFragment() {
         cardEasy.setOnClickListener { selectGateway(cardEasy, cardJazz, PaymentGateway.EASYPAISA) }
 
         btnConfirm.setOnClickListener {
-            val mobile = etMobile.text.toString().trim()
+            var mobile = etMobile.text.toString().trim()
+            mobile = AuthRepository.normalizePkMobile(mobile)
             val mpin = etMpin.text.toString().trim()
+            if (!mobile.matches(Regex("03[0-9]{9}"))) {
+                Toast.makeText(context, "Wallet: 03XXXXXXXXX enter karein", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             if (mpin.length < 4) {
                 Toast.makeText(context, R.string.enter_mpin, Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
@@ -91,6 +97,11 @@ class PaymentBottomSheet : BottomSheetDialogFragment() {
                 result.onSuccess { paymentResult ->
                     prefs.savedWalletNumber = mobile
                     prefs.defaultGateway = selectedGateway.displayName
+                    Toast.makeText(
+                        context,
+                        "${selectedGateway.displayName} OK · ${paymentResult.transactionId}",
+                        Toast.LENGTH_LONG
+                    ).show()
                     listener?.onPaymentConfirmed(
                         selectedGateway, paymentResult.mobileNumber, paymentResult.transactionId
                     )

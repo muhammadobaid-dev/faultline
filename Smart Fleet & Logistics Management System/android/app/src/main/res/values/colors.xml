@@ -1,62 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Brand — Deep Navy + Gold (Premium Logistics) -->
-    <color name="primary">#0B1F3A</color>
-    <color name="primary_dark">#061428</color>
-    <color name="primary_light">#1A3A6B</color>
-    <color name="primary_surface">#E8EEF5</color>
+    <!-- Brand — Slate Navy + Amber Gold (professional logistics) -->
+    <color name="primary">#0A1628</color>
+    <color name="primary_dark">#050D18</color>
+    <color name="primary_light">#16324F</color>
+    <color name="primary_surface">#EAF0F6</color>
 
-    <!-- Accent — Warm Gold -->
-    <color name="accent">#E8A317</color>
-    <color name="accent_dark">#C88A0F</color>
-    <color name="accent_light">#FFF3D6</color>
+    <!-- Accent — Refined Amber -->
+    <color name="accent">#F0A500</color>
+    <color name="accent_dark">#C98400</color>
+    <color name="accent_light">#FFF6E0</color>
 
     <!-- Teal — Active / Success -->
-    <color name="teal">#0D9488</color>
+    <color name="teal">#0F766E</color>
     <color name="teal_light">#CCFBF1</color>
 
     <!-- Neutrals -->
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
-    <color name="background">#F4F6F9</color>
+    <color name="background">#F1F4F8</color>
     <color name="surface">#FFFFFF</color>
-    <color name="surface_variant">#EEF1F6</color>
-    <color name="text_primary">#0F1D2E</color>
-    <color name="text_secondary">#5C6B7A</color>
-    <color name="text_hint">#9AA8B4</color>
-    <color name="divider">#DDE3EA</color>
-    <color name="input_stroke">#C5CED8</color>
-    <color name="input_stroke_focus">#1A3A6B</color>
+    <color name="surface_variant">#E8EDF3</color>
+    <color name="text_primary">#0B1524</color>
+    <color name="text_secondary">#5A6A7A</color>
+    <color name="text_hint">#8B9AAB</color>
+    <color name="divider">#D5DEE8</color>
+    <color name="input_stroke">#B8C4D0</color>
+    <color name="input_stroke_focus">#16324F</color>
 
     <!-- Semantic -->
-    <color name="success">#059669</color>
+    <color name="success">#047857</color>
     <color name="success_bg">#D1FAE5</color>
-    <color name="warning">#D97706</color>
+    <color name="warning">#B45309</color>
     <color name="warning_bg">#FEF3C7</color>
-    <color name="error">#DC2626</color>
+    <color name="error">#B91C1C</color>
     <color name="error_bg">#FEE2E2</color>
-    <color name="info">#2563EB</color>
+    <color name="info">#1D4ED8</color>
     <color name="info_bg">#DBEAFE</color>
+
+    <!-- Wallet brands -->
+    <color name="jazzcash">#121212</color>
+    <color name="jazzcash_red">#E31C23</color>
+    <color name="easypaisa">#00A651</color>
 
     <!-- Legacy aliases -->
     <color name="secondary">@color/accent</color>
 
     <!-- Vehicle category accents -->
-    <color name="cat_bike">#6366F1</color>
+    <color name="cat_bike">#4F46E5</color>
     <color name="cat_bike_bg">#EEF2FF</color>
-    <color name="cat_van">#0D9488</color>
+    <color name="cat_van">#0F766E</color>
     <color name="cat_van_bg">#CCFBF1</color>
-    <color name="cat_truck">#2563EB</color>
+    <color name="cat_truck">#1D4ED8</color>
     <color name="cat_truck_bg">#DBEAFE</color>
-    <color name="cat_heavy">#7C3AED</color>
+    <color name="cat_heavy">#6D28D9</color>
     <color name="cat_heavy_bg">#EDE9FE</color>
-    <color name="cat_cold">#0891B2</color>
+    <color name="cat_cold">#0E7490</color>
     <color name="cat_cold_bg">#CFFAFE</color>
 
-    <!-- Gradients (start/end) -->
-    <color name="gradient_start">#0B1F3A</color>
-    <color name="gradient_mid">#1A3A6B</color>
-    <color name="gradient_end">#0D4F8B</color>
-    <color name="gradient_gold_start">#E8A317</color>
-    <color name="gradient_gold_end">#F5C842</color>
+    <!-- Gradients -->
+    <color name="gradient_start">#0A1628</color>
+    <color name="gradient_mid">#12304A</color>
+    <color name="gradient_end">#0C4A6E</color>
+    <color name="gradient_gold_start">#F0A500</color>
+    <color name="gradient_gold_end">#F5C542</color>
 </resources>

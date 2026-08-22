@@ -2,7 +2,6 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // ─── Helper Functions ───────────────────────────────────────────
     function isAuthenticated() {
       return request.auth != null;
     }
@@ -12,15 +11,15 @@ service cloud.firestore {
     }
 
     function isAdmin() {
-      return isAuthenticated() && getUserData().role == 'admin';
+      return isAuthenticated() && getUserData().role == 'ADMIN';
     }
 
     function isCustomer() {
-      return isAuthenticated() && getUserData().role == 'customer';
+      return isAuthenticated() && getUserData().role == 'CUSTOMER';
     }
 
     function isDriver() {
-      return isAuthenticated() && getUserData().role == 'driver';
+      return isAuthenticated() && getUserData().role == 'DRIVER';
     }
 
     function isBookingParticipant(bookingId) {
@@ -30,7 +29,6 @@ service cloud.firestore {
           || isAdmin();
     }
 
-    // ─── Users Collection ───────────────────────────────────────────
     match /users/{userId} {
       allow read: if isAuthenticated() && (request.auth.uid == userId || isAdmin());
       allow create: if isAuthenticated() && request.auth.uid == userId;
@@ -38,31 +36,35 @@ service cloud.firestore {
       allow delete: if isAdmin();
     }
 
-    // ─── Vehicles Collection ────────────────────────────────────────
+    // Username → email lookup for login (public read of email only)
+    match /usernames/{username} {
+      allow get: if true;
+      allow list: if false;
+      allow create: if isAuthenticated()
+                    && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if isAuthenticated()
+                            && resource.data.userId == request.auth.uid;
+    }
+
     match /vehicles/{vehicleId} {
       allow read: if isAuthenticated();
       allow write: if isAdmin();
     }
 
-    // ─── Services Collection ────────────────────────────────────────
     match /services/{serviceId} {
       allow read: if isAuthenticated();
       allow write: if isAdmin();
     }
 
-    // ─── Bookings Collection ────────────────────────────────────────
     match /bookings/{bookingId} {
       allow read: if isBookingParticipant(bookingId);
-      allow create: if isCustomer();
+      allow create: if isCustomer() || isAdmin();
       allow update: if isAdmin()
                     || (isDriver() && resource.data.assignedDriverId == request.auth.uid)
-                    || (isCustomer() && resource.data.customerId == request.auth.uid
-                        && request.resource.data.diff(resource.data).affectedKeys()
-                           .hasOnly(['status']) == false);
+                    || (isCustomer() && resource.data.customerId == request.auth.uid);
       allow delete: if isAdmin();
     }
 
-    // ─── Payments Collection ────────────────────────────────────────
     match /payments/{paymentId} {
       allow read: if isAuthenticated()
                   && (resource.data.userId == request.auth.uid || isAdmin());
@@ -70,21 +72,18 @@ service cloud.firestore {
       allow update: if isAdmin();
     }
 
-    // ─── Tracking Collection ────────────────────────────────────────
     match /tracking/{bookingId} {
       allow read: if isBookingParticipant(bookingId);
       allow write: if isDriver()
                    && get(/databases/$(database)/documents/bookings/$(bookingId)).data.assignedDriverId == request.auth.uid;
     }
 
-    // ─── Notifications Collection ─────────────────────────────────
     match /notifications/{notificationId} {
       allow read: if isAuthenticated() && resource.data.userId == request.auth.uid;
       allow create: if isAdmin();
       allow update: if isAuthenticated() && resource.data.userId == request.auth.uid;
     }
 
-    // ─── Proof of Delivery Collection ───────────────────────────────
     match /proof_of_delivery/{podId} {
       allow read: if isAuthenticated();
       allow create: if isDriver() || isCustomer();

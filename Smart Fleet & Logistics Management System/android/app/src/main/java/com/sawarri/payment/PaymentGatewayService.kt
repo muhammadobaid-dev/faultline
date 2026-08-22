@@ -34,8 +34,8 @@ object PaymentGatewayService {
             return Result.failure(IllegalArgumentException("Invalid payment amount"))
         }
 
-        // Simulate gateway API round-trip
-        delay(2000)
+        // Simulate gateway API round-trip (demo)
+        delay(900)
 
         val prefix = when (gateway) {
             PaymentGateway.JAZZCASH -> "JC"

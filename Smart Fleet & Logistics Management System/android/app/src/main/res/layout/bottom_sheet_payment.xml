@@ -109,8 +109,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_lg"
-        android:hint="@string/wallet_mobile"
-        app:prefixText="+92 ">
+        android:hint="@string/wallet_mobile">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etWalletMobile"

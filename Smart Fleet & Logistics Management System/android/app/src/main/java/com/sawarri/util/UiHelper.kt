@@ -48,6 +48,28 @@ object UiHelper {
         else -> status.name.replace('_', ' ')
     }
 
+    /** Customer-facing explanation of what is happening with their order. */
+    fun customerOrderMessage(status: TripStatus): String = when (status) {
+        TripStatus.PENDING_APPROVAL -> "Waiting for admin approval"
+        TripStatus.APPROVED -> "Approved — please pay 10% deposit"
+        TripStatus.DEPOSIT_PAID -> "Deposit paid — driver will start soon"
+        TripStatus.ASSIGNED -> "Driver assigned to your trip"
+        TripStatus.EN_ROUTE -> "Driver is on the way to pickup"
+        TripStatus.AT_PICKUP -> "Driver at pickup — pay 50% now"
+        TripStatus.IN_TRANSIT -> "Cargo in transit to destination"
+        TripStatus.AT_DESTINATION -> "Arrived — pay final settlement"
+        TripStatus.DELIVERED -> "Delivered successfully"
+        TripStatus.CLOSED -> "Trip completed"
+        TripStatus.REJECTED -> "Booking was rejected"
+        TripStatus.CANCELLED, TripStatus.AUTO_CANCELLED -> "Booking cancelled"
+        else -> statusLabel(status)
+    }
+
+    fun isActiveTrip(status: TripStatus): Boolean = status !in listOf(
+        TripStatus.CLOSED, TripStatus.REJECTED,
+        TripStatus.CANCELLED, TripStatus.AUTO_CANCELLED, TripStatus.DELIVERED
+    )
+
     fun applyStatusChip(textView: TextView, status: TripStatus) {
         val ctx = textView.context
         textView.text = statusLabel(status)
